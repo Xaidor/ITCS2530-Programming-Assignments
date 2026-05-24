@@ -1,20 +1,45 @@
-// Week01_Programming_Assignment.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
+#include <iostream> 
+#include <string>
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    // Customize a skateboard
+    // type of skateboard, 
+    // board size,
+    // and griptape grit (courseness: Fine, Regular/Standard, Aggressive)
+
+    // Inputs:
+    // sting skateboardType 
+    // double size (7.0 - 33.0)
+    // int grit    (<60 course, 80 is standard, 80+ is fine)
+
+    string skateboardType;
+    double boardSize = 0.0;
+    int grit = 0;
+
+    // Collect user input
+    cout << "What type of skateboard do you ride? (longboard/skateboard): ";
+    cin >> skateboardType;
+
+    cout << "Enter board size: ";
+    cin >> boardSize;
+
+    cout << "Enter grip tape grit: ";
+    cin >> grit;
+
+    // Calculate the cost of the custom board total
+    double basePrice = 60.00;
+    double sizeFee = boardSize * 3.00;
+    double gritFee = grit * 0.10;
+
+    double total = basePrice + sizeFee + gritFee;
+
+    // Output creative paragraph using all variables
+    cout << "\nYou've selected a " << skateboardType << " with a " << boardSize
+        << " deck and " << grit << "-grit grip. Excellent taste.\n";
+
+    cout << "Hand over $" << total
+        << " and we'll start crafting your future wipeouts.\n";
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
