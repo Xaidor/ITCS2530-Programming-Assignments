@@ -30,7 +30,7 @@ int main()
     // Favorite skateboard brand
     string favbrand;
     cout << "Favorite board brand: ";
-    cin >> favbrand >> endl;
+    cin >> favbrand;
 
     // How many board does the user own
     // Favorite skatepark
@@ -51,7 +51,7 @@ int main()
     double boardSize = 0.0;
     int grit = 0;
 
-    // --------------- Collect user input ---------------
+    // Type of board
     cout << "What type of skateboard do you ride? (longboard/skateboard): ";
     cin >> skateboardType;
 
@@ -61,14 +61,14 @@ int main()
     cout << "Enter grip tape grit: ";
     cin >> grit;
 
-    // --------------- Calculate the cost of the custom board total ---------------
+    // Calculate the cost of the custom board total 
     double basePrice = 60.00;
     double sizeFee = boardSize * 3.00;
     double gritFee = grit * 0.10;
 
     double total = basePrice + sizeFee + gritFee;
 
-    // --------------- Output creative paragraph using all variables ---------------
+    // Output creative paragraph using all variables
     cout << "\nYou've selected a " << skateboardType << " with a " << boardSize
         << " deck and " << grit << "-grit grip. Excellent taste.\n";
 
