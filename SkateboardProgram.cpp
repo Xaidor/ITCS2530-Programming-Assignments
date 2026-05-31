@@ -26,7 +26,12 @@ int main()
     // Spacing
     cout << endl;
     
-    // Favorite board brand
+    // ===================== User Input =====================
+    // Favorite skateboard brand
+    string favbrand;
+    cout << "Favorite board brand: ";
+    cin >> favbrand >> endl;
+
     // How many board does the user own
     // Favorite skatepark
     // How many days out the week do you skateboard?
