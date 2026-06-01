@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+
     // ===================== Welcome Banner =====================
     cout << setfill(' ') << right;
 
@@ -93,7 +94,7 @@ int main()
     fs << left << setw(25) << "Avg Spend Per Board:" << right << "$" << avgSpend << endl;
 
     fs.close();
-}
+
 
 
 
