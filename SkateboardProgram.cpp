@@ -38,11 +38,13 @@ int main()
 
     switch (menu) {
     case 1:
+        // Contact information
         cout << "Email: examplerun@email.com" << endl;
         cout << "Number: 333-222-5555" << endl;
         return 0;
 
     case 2:
+        // Order Details
         if (total == 0.0) {
             cout << "No orders found yet. Customize a board first!" << endl;
         }
@@ -56,6 +58,7 @@ int main()
         return 0;
 
     case 3:
+        // Customize Board
         cout << endl;
         cout << "Great! Let's customize your board." << endl;
         break;
@@ -98,7 +101,7 @@ int main()
 
     cout << endl;
 
-    // ===================== Skill Level =====================
+    // ===================== Setup Type =====================
     if (boardSize >= 8.0 && grit >= 80) {
         cout << "Nice! This is a premium setup for a pro-level skater." << endl;
     }
@@ -108,6 +111,7 @@ int main()
     else {
         cout << "Standard setup." << endl;
     }
+    cout << endl;
 
     // ===================== Summary =====================
     cout << "\n===== Skateboarding Summary =====\n";
