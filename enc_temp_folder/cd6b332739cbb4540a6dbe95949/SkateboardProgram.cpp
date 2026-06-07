@@ -56,6 +56,7 @@ int main()
         return 0;
 
     case 3:
+        cout << endl;
         cout << "Great! Let's customize your board." << endl;
         break;
 
@@ -93,9 +94,11 @@ int main()
     double gritFee = grit * 0.10;
     total = basePrice + sizeFee + gritFee;
 
+    cout << endl;
+
     // ===================== Skill Level =====================
     if (boardSize >= 8.0 && grit >= 80) {
-        cout << "Premium setup, pro-level skater." << endl;
+        cout << "Nice! This is a premium setup for a pro-level skater." << endl;
     }
     else if (boardSize < 8.0 && grit <= 70) {
         cout << "Beginner level, casual skater." << endl;

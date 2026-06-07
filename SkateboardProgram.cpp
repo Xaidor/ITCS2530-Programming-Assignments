@@ -56,6 +56,7 @@ int main()
         return 0;
 
     case 3:
+        cout << endl;
         cout << "Great! Let's customize your board." << endl;
         break;
 
@@ -76,6 +77,8 @@ int main()
     cout << "Enter grip tape grit (60 - 100): ";
     cin >> grit;
 
+    cout << endl;
+
     // ===================== Restrictions =====================
     if ((boardSize < 7.0 || boardSize > 9.0) && (grit < 60 || grit > 100)) {
         cout << "Warning: Both your board size AND grit are outside normal ranges." << endl;
@@ -93,14 +96,14 @@ int main()
     double gritFee = grit * 0.10;
     total = basePrice + sizeFee + gritFee;
 
-    cout << endl
+    cout << endl;
 
     // ===================== Skill Level =====================
     if (boardSize >= 8.0 && grit >= 80) {
         cout << "Nice! This is a premium setup for a pro-level skater." << endl;
     }
     else if (boardSize < 8.0 && grit <= 70) {
-        cout << "Beginner level, casual skater." << endl;
+        cout << "Pretty cool beginner setup for a casual skater." << endl;
     }
     else {
         cout << "Standard setup." << endl;
