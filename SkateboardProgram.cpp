@@ -1,4 +1,4 @@
-#include <iostream> 
+#include <iostream>
 #include <string>
 #include <iomanip>
 #include <fstream>
@@ -6,6 +6,11 @@ using namespace std;
 
 int main()
 {
+    // ===================== Declare Variables =====================
+    string brandChoice = "";
+    double boardSize = 0.0;
+    int grit = 0;
+    double total = 0.0;
 
     // ===================== Welcome Banner =====================
     cout << setfill(' ') << right;
@@ -26,53 +31,97 @@ int main()
 
     cout << endl;
 
+    // ===================== Menu Options =====================
+    int menu;
+    cout << "Enter \n1 To Contact Us \n2 To View Order \n3 Customize Board: ";
+    cin >> menu;
 
+    switch (menu) {
+    case 1:
+        // Contact information
+        cout << "Email: examplerun@email.com" << endl;
+        cout << "Number: 333-222-5555" << endl;
+        return 0;
 
-    // ===================== User Input =====================
-    cout << fixed << setprecision(2);
+    case 2:
+        // Order Details
+        if (total == 0.0) {
+            cout << "No orders found yet. Customize a board first!" << endl;
+        }
+        else {
+            cout << "===== Order Details =====\n";
+            cout << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
+            cout << left << setw(25) << "Board Size:" << right << boardSize << endl;
+            cout << left << setw(25) << "Grip tape grit:" << right << grit << endl;
+            cout << left << setw(25) << "Total:" << right << "$" << total << endl;
+        }
+        return 0;
 
-    string favbrand;
-    cout << "Favorite board brand: ";
-    cin >> favbrand;
+    case 3:
+        // Customize Board
+        cout << endl;
+        cout << "Great! Let's customize your board." << endl;
+        break;
 
-    int boardsOwned = 0;
-    cout << "Enter the number of boards you currently own: ";
-    cin >> boardsOwned;
+    default:
+        cout << "Invalid menu option." << endl;
+        return 0;
+    }
+    
+    cout << endl;
 
-    if (boardsOwned < 0)
-    {
-        cout << "Invalid input. Boards owned cannot be negative.";
-        return -1;
+    // ===================== User Board Customization Input =====================
+    cout << "Enter skateboard brand: ";
+    cin >> brandChoice;
+
+    cout << "Enter board size (7.0 - 9.0): ";
+    cin >> boardSize;
+
+    cout << "Enter grip tape grit (60 - 100): ";
+    cin >> grit;
+
+    cout << endl;
+
+    // ===================== Restrictions =====================
+    if ((boardSize < 7.0 || boardSize > 9.0) && (grit < 60 || grit > 100)) {
+        cout << "Warning: Both your board size AND grit are outside normal ranges." << endl;
+    }
+    else if (boardSize < 7.0 || boardSize > 9.0) {
+        cout << "Warning: Board size is unusual for standard decks." << endl;
+    }
+    else if (grit < 60 || grit > 100) {
+        cout << "Warning: Grip tape grit is outside typical values." << endl;
     }
 
-    double collCost = 0.00;
-    cout << "How much have you spent on your collection of boards? ";
-    cin >> collCost;
+    // ===================== Calculate cost of board =====================
+    double basePrice = 60.00;
+    double sizeFee = boardSize * 3.00;
+    double gritFee = grit * 0.10;
+    total = basePrice + sizeFee + gritFee;
 
-    if (collCost < 0.00)
-    {
-        cout << "Invalid input. Cost cannot be negative.";
-        return -1;
+    cout << endl;
+
+    // ===================== Setup Type =====================
+    if (boardSize >= 8.0 && grit >= 80) {
+        cout << "Nice! This is a premium setup for a pro-level skater." << endl;
     }
-
-    double avgSpend = 0.0;
-    if (boardsOwned > 0)
-    {
-        avgSpend = collCost / boardsOwned;
+    else if (boardSize < 8.0 && grit <= 70) {
+        cout << "Pretty cool beginner setup for a casual skater." << endl;
     }
+    else {
+        cout << "Standard setup." << endl;
+    }
+    cout << endl;
 
-    cout << endl << endl;
+    // ===================== Summary =====================
+    cout << "\n===== Skateboarding Summary =====\n";
+    cout << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
+    cout << left << setw(25) << "Board Size:" << right << boardSize << endl;
+    cout << left << setw(25) << "Grip tape grit:" << right << grit << endl;
+    cout << left << setw(25) << "Total:" << right << "$" << total << endl;
 
-
-
-    // ===================== User Summary =====================
-    cout << setfill('.');
-    cout << "===== Skateboarding Summary File =====\n";
-
-    cout << left << setw(25) << "Favorite Brand:" << right << favbrand << endl;
-    cout << left << setw(25) << "Boards Owned:" << right << boardsOwned << endl;
-    cout << left << setw(25) << "Total Collection Cost:" << right << "$" << collCost << endl;
-    cout << left << setw(25) << "Avg Spend Per Board:" << right << "$" << avgSpend << endl;
+    cout << "\nExcellent taste. Hand over $" << total
+        << " and we'll start crafting your future wipeouts.\n";
 
     // ===================== Save Copy of Summary =====================
     ofstream fs("report.txt");
@@ -87,46 +136,13 @@ int main()
     fs << setfill('.');
 
     fs << "===== Skateboarding Summary File =====\n";
+    fs << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
+    fs << left << setw(25) << "Board Size:" << right << boardSize << endl;
+    fs << left << setw(25) << "Grip tape grit:" << right << grit << endl;
+    fs << left << setw(25) << "Total:" << right << "$" << total << endl;
 
-    fs << left << setw(25) << "Favorite Brand:" << right << favbrand << endl;
-    fs << left << setw(25) << "Boards Owned:" << right << boardsOwned << endl;
-    fs << left << setw(25) << "Total Collection Cost:" << right << "$" << collCost << endl;
-    fs << left << setw(25) << "Avg Spend Per Board:" << right << "$" << avgSpend << endl;
-
-    fs.close();
-
-
-
-
-    // ===================== User board customization =====================
-    string skateboardType;
-    double boardSize = 0.0;
-    int grit = 0;
-
-    // Type of board
-    cout << "What type of skateboard do you ride? (longboard/skateboard): ";
-    cin  >> skateboardType;
-
-    cout << "Enter board size: ";
-    cin  >> boardSize;
-
-    cout << "Enter grip tape grit: ";
-    cin  >> grit;
-
-    // ===================== Calculate cost of board =====================
-    double basePrice = 60.00;
-    double sizeFee = boardSize * 3.00;
-    double gritFee = grit * 0.10;
-
-    double total = basePrice + sizeFee + gritFee;
-
-    // ===================== Output cost =====================
-    cout << "\nYou've selected a " << skateboardType << " with a " << boardSize
-        << " deck and " << grit << "-grit grip. Excellent taste.\n";
-
-    cout << "Hand over $" << total
+    fs << "\nExcellent taste. Hand over $" << total
         << " and we'll start crafting your future wipeouts.\n";
 
     return 0;
-
 }
