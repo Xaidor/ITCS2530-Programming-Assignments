@@ -11,6 +11,17 @@ int main()
     double boardSize = 0.0;
     int grit = 0;
     double total = 0.0;
+    int menu;
+    int boardCount = 0;
+
+    const in MAX_BOARDS = 3; // The maximum amount of times the user can customize a board
+ 
+    // Create arrays to store each board's details 
+    string savedBrand[MAX_BOARDS];
+    double savedSize[MAX_BOARDS];
+    int savedGrit[MAX_BOARDS];
+    double savedTotal[MAX_BOARDS];
+
 
     // ===================== Welcome Banner =====================
     cout << setfill(' ') << right;
@@ -32,40 +43,73 @@ int main()
     cout << endl;
 
     // ===================== Menu Options =====================
-    int menu;
-    cout << "Enter \n1 To Contact Us \n2 To View Order \n3 Customize Board: ";
-    cin >> menu;
+    do {
+        cout << "Enter \n1 To Contact Us \n2 To View Order \n3 Customize Board: ";
 
-    switch (menu) {
-    case 1:
-        // Contact information
-        cout << "Email: examplerun@email.com" << endl;
-        cout << "Number: 333-222-5555" << endl;
-        return 0;
-
-    case 2:
-        // Order Details
-        if (total == 0.0) {
-            cout << "No orders found yet. Customize a board first!" << endl;
-        }
-        else {
-            cout << "===== Order Details =====\n";
-            cout << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
-            cout << left << setw(25) << "Board Size:" << right << boardSize << endl;
-            cout << left << setw(25) << "Grip tape grit:" << right << grit << endl;
-            cout << left << setw(25) << "Total:" << right << "$" << total << endl;
-        }
-        return 0;
-
-    case 3:
-        // Customize Board
+        cin >> menu;
         cout << endl;
-        cout << "Great! Let's customize your board." << endl;
-        break;
 
-    default:
-        cout << "Invalid menu option." << endl;
-        return 0;
+        switch (menu) {
+
+        case 1:
+            // Contact information
+            cout << "Email: examplerun@email.com" << endl;
+            cout << "Number: 333-222-5555" << endl;
+            cout << endl;
+            break;
+
+        case 2:
+            // Order Details
+            if (boardCount == 0) {
+
+                cout << "No orders found yet. Customize a board first!" << endl;
+                cout << endl;
+            }
+            else {
+                cout << "===== Your Custom Boards =====\n";
+                
+                // For loop to print each custom board order details
+                for (int i = 0; i < boardCount; i++){
+
+                    cout << "---Board #" << i + 1 << "---" << endl;
+
+                    cout << left << setw(25) << "Favorite Brand:" << right << savedBrand[i] << endl;
+
+                    cout << left << setw(25) << "Board Size:" << right << savedSize[i] << endl;
+
+                    cout << left << setw(25) << "Grip tape grit:" << right << savedGrit[i] << endl;
+
+                    cout << left << setw(25) << "Total:" << right << "$" << savedTotal[i] << endl;
+                }
+            
+            }
+            break;
+            cout << endl;
+
+        case 3:
+            // Customize Board
+            if (boardCount >= MAX_BOARDS) {
+                cout << "You have reached the maximum of 3 custom boards" << end1;
+                cout << endl;
+
+                break;
+            }
+
+                cout << "Great! Let's customize your board." << endl;
+                break;
+                // Get brand name
+                cout << "Enter skateboard brand: ";
+                cin >> brandChoice;
+
+                // While loop validation/Restrictions
+                boardSize = 0.0;
+                while (boardSize < 7.0 )
+
+                
+        default:
+            cout << "Invalid menu option." << endl;
+            return 0;
+        }
     }
     
     cout << endl;
