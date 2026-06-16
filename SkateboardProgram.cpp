@@ -7,17 +7,6 @@ using namespace std;
 int main()
 {
     // ===================== Declare Variables =====================
-    const int MAX_BOARDS = 5;
-
-    // Arrays to store each board's details (up to 5 boards)
-    string savedBrand[MAX_BOARDS];
-    double savedSize[MAX_BOARDS];
-    int savedGrit[MAX_BOARDS];
-    double savedTotal[MAX_BOARDS];
-
-    // Track how many boards the customer has built
-    int boardCount = 0;
-
     string brandChoice = "";
     double boardSize = 0.0;
     int grit = 0;
@@ -43,126 +32,98 @@ int main()
 
     cout << endl;
 
-    // ===================== Main Program Loop =====================
-    // ============= Do-while keeps the menu running until the customer chooses to exit =============
+    // ===================== Main Menu Loop (DO-WHILE) =====================
     do {
-        cout << "Enter \n1 To Contact Us \n2 To View Orders \n3 Customize Board \n4 Exit: ";
+        cout << "Enter \n1 To Contact Us \n2 View Order \n3 Customize Board \n4 Exit: ";
         cin >> menu;
         cout << endl;
 
         switch (menu) {
 
-        // ===================== Case 1: Contact =====================
         case 1:
             cout << "Email: examplerun@email.com" << endl;
             cout << "Number: 333-222-5555" << endl;
             cout << endl;
             break;
 
-        // ===================== Case 2: View All Orders =====================
         case 2:
-            // Check if any boards have been built yet
-            if (boardCount == 0) {
+            if (total == 0.0) {
                 cout << "No orders found yet. Customize a board first!" << endl;
-                cout << endl;
             }
             else {
-                cout << "===== Your Custom Boards =====\n\n";
-
-                // ============= For loop prints each saved board summary numbered in order =============
-                for (int i = 0; i < boardCount; i++) {
-                    cout << "--- Board #" << (i + 1) << " ---" << endl;
-                    cout << left << setw(25) << "Favorite Brand:" << right << savedBrand[i] << endl;
-                    cout << left << setw(25) << "Board Size:" << right << savedSize[i] << endl;
-                    cout << left << setw(25) << "Grip Tape Grit:" << right << savedGrit[i] << endl;
-                    cout << left << setw(25) << "Total:" << right << "$" << savedTotal[i] << endl;
-                    cout << endl;
-                }
+                cout << "===== Order Details =====\n";
+                cout << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
+                cout << left << setw(25) << "Board Size:" << right << boardSize << endl;
+                cout << left << setw(25) << "Grip tape grit:" << right << grit << endl;
+                cout << left << setw(25) << "Total:" << right << "$" << total << endl;
             }
+            cout << endl;
             break;
 
-        // ===================== Case 3: Customize a Board =====================
-        case 3:
-            // Check if customer has reached the 5 board limit
-            if (boardCount >= MAX_BOARDS) {
-                cout << "You have reached the maximum of 5 custom boards for this session." << endl;
-                cout << endl;
-                break;
-            }
+        case 3: { //Braces needed for declaring variables 
 
-            cout << "Great! Let's customize your board." << endl;
+            cout << "Great! Let's customize 3 boards." << endl;
             cout << endl;
 
-            // Get brand name
-            cout << "Enter skateboard brand: ";
-            cin >> brandChoice;
+            // ======== FOR LOOP: User builds 3 boards ========
+            for (int i = 1; i <= 3; i++) {
 
-            // ============= While loop validates board size input until a valid value is entered =============
-            boardSize = 0.0;
-            while (boardSize < 7.0 || boardSize > 9.0) {
+                cout << "----- Customizing Board #" << i << " -----" << endl;
+
+                // Brand input
+                cout << "Enter skateboard brand: ";
+                cin.ignore();
+                getline(cin, brandChoice);
+
+                // Board size validation
                 cout << "Enter board size (7.0 - 9.0): ";
-                cin >> boardSize;
-                if (boardSize < 7.0 || boardSize > 9.0) {
-                    cout << "Invalid size. Please enter a value between 7.0 and 9.0." << endl;
+                while (!(cin >> boardSize) || boardSize < 7.0 || boardSize > 9.0) {
+                    cout << "Invalid size. Enter a number between 7.0 and 9.0: ";
+                    cin.clear();
+                    cin.ignore(1000, '\n');
                 }
-            }
 
-            // While loop validates grit input until a valid value is entered
-            grit = 0;
-            while (grit < 60 || grit > 100) {
+                // Grit validation
                 cout << "Enter grip tape grit (60 - 100): ";
-                cin >> grit;
-                if (grit < 60 || grit > 100) {
-                    cout << "Invalid grit. Please enter a value between 60 and 100." << endl;
+                while (!(cin >> grit) || grit < 60 || grit > 100) {
+                    cout << "Invalid grit. Enter a number between 60 and 100: ";
+                    cin.clear();
+                    cin.ignore(1000, '\n');
                 }
-            }
 
-            cout << endl;
+                cout << endl;
 
-            // ===================== Calculate Cost =====================
-            double basePrice = 60.00;
-            double sizeFee = boardSize * 3.00;
-            double gritFee = grit * 0.10;
-            total = basePrice + sizeFee + gritFee;
+                // Calculate cost
+                double basePrice = 60.00;
+                double sizeFee = boardSize * 3.00;
+                double gritFee = grit * 0.10;
+                total = basePrice + sizeFee + gritFee;
 
-            // ===================== Setup Type =====================
-            if (boardSize >= 8.0 && grit >= 80) {
-                cout << "Nice! This is a premium setup for a pro-level skater." << endl;
-            }
-            else if (boardSize < 8.0 && grit <= 70) {
-                cout << "Pretty cool beginner setup for a casual skater." << endl;
-            }
-            else {
-                cout << "Standard setup." << endl;
-            }
+                // Setup type
+                if (boardSize >= 8.0 && grit >= 80) {
+                    cout << "Nice! This is a premium setup for a pro-level skater." << endl;
+                }
+                else if (boardSize < 8.0 && grit <= 70) {
+                    cout << "Pretty cool beginner setup for a casual skater." << endl;
+                }
+                else {
+                    cout << "Standard setup." << endl;
+                }
 
-            cout << endl;
+                cout << endl;
 
-            // ===================== Board Summary =====================
-            cout << "===== Skateboarding Summary =====\n";
-            cout << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
-            cout << left << setw(25) << "Board Size:" << right << boardSize << endl;
-            cout << left << setw(25) << "Grip Tape Grit:" << right << grit << endl;
-            cout << left << setw(25) << "Total:" << right << "$" << total << endl;
+                // Summary
+                cout << "===== Board #" << i << " Summary =====\n";
+                cout << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
+                cout << left << setw(25) << "Board Size:" << right << boardSize << endl;
+                cout << left << setw(25) << "Grip tape grit:" << right << grit << endl;
+                cout << left << setw(25) << "Total:" << right << "$" << total << endl;
 
-            cout << "\nExcellent taste. Hand over $" << total
-                << " and we'll start crafting your future wipeouts.\n";
-            cout << endl;
+                cout << "\nExcellent taste. Hand over $" << total
+                    << " and we'll start crafting your future wipeouts.\n\n";
 
-            // ===================== Save Board to Arrays =====================
-            savedBrand[boardCount] = brandChoice;
-            savedSize[boardCount] = boardSize;
-            savedGrit[boardCount] = grit;
-            savedTotal[boardCount] = total;
-            boardCount++;
-
-            cout << "Board #" << boardCount << " saved! You have " 
-                 << (MAX_BOARDS - boardCount) << " build(s) remaining this session." << endl;
-            cout << endl;
-
-            // ===================== Save to File =====================
-            {
-                ofstream fs("report.txt");
+                // Save to file
+                ofstream fs("report.txt", ios::app);
 
                 if (!fs) {
                     cout << "Error: Could not create report.txt\n";
@@ -172,33 +133,30 @@ int main()
                 fs << fixed << setprecision(2);
                 fs << setfill('.');
 
-                fs << "===== Skateboarding Summary File =====\n\n";
+                fs << "===== Board #" << i << " Summary =====\n";
+                fs << left << setw(25) << "Favorite Brand:" << right << brandChoice << endl;
+                fs << left << setw(25) << "Board Size:" << right << boardSize << endl;
+                fs << left << setw(25) << "Grip tape grit:" << right << grit << endl;
+                fs << left << setw(25) << "Total:" << right << "$" << total << endl;
+                fs << endl;
 
-                // Write all boards saved so far to the file
-                for (int i = 0; i < boardCount; i++) {
-                    fs << "--- Board #" << (i + 1) << " ---\n";
-                    fs << left << setw(25) << "Favorite Brand:" << right << savedBrand[i] << endl;
-                    fs << left << setw(25) << "Board Size:" << right << savedSize[i] << endl;
-                    fs << left << setw(25) << "Grip Tape Grit:" << right << savedGrit[i] << endl;
-                    fs << left << setw(25) << "Total:" << right << "$" << savedTotal[i] << endl;
-                    fs << endl;
-                }
+                cin.ignore(); // clear leftover newline before next loop
             }
 
             break;
+        }
 
-        // ===================== Case 4: Exit =====================
         case 4:
             cout << "Thanks for visiting!" << endl;
             break;
 
         default:
-            cout << "Invalid menu option. Please try again." << endl;
+            cout << "Invalid menu option." << endl;
             cout << endl;
             break;
-        }
+        } // <-- closes switch(menu)
 
-    } while (menu != 4); // Keep looping until the userr chooses to exit
+    } while (menu != 4); // <-- closes do-while loop
 
     return 0;
 }
