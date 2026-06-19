@@ -361,3 +361,18 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#This prevents future junk from being committed
+*.exe
+*.obj
+*.pdb
+*.idb
+*.ipch
+*.tlog
+*.log
+*.ilk
+*.cache
+*.db
+*.opendb
+*.VC.db
+enc_temp_folder/
