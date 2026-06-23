@@ -2,7 +2,6 @@
 #include <string>
 #include <iomanip>
 #include <fstream>
-#include <Windows.h>
 using namespace std;
 
 // ===================== Declaring Functions =====================
