@@ -14,6 +14,13 @@ int getGrit();
 double calculateTotal(double size, int grit);
 void saveReport(int boardNum, string brand, double size, int grit, double total);
 void customizeBoards();
+void trickRecommendations(string recs[], int size);
+//setting up enum
+enum SkillLevel {
+    Beginner = 1,
+    Amateur = 2,
+    Professional = 3
+};
 
 // ===================== MAIN =====================
 int main() {
@@ -50,6 +57,7 @@ int main() {
     } while (menu != 4);
 
     return 0;
+
 }
 
 // ===================== BANNER =====================
@@ -145,9 +153,67 @@ void saveReport(int boardNum, string brand, double size, int grit, double total)
     fs << endl;
 }
 
+//function that accepts an array as a parameter
+void trickRecommendations(string recs[], int size) {
+    int inputLevel;
+
+    for (int i = 0; i < size; i++) {
+        cout << "Please enter your skill level so we can recommend some new tricks for you to try!" << recs[i] << endl;
+        cout << recs[i] << endl;
+        cin >> inputLevel;
+
+        SkillLevel level = static_cast<SkillLevel>(inputLevel);
+
+        switch (level) {
+        case Beginner:
+            cout << "Some tricks you can try includ an Ollie, Tic-Tacs, or kickturns. \n";
+            break;
+        case Amateur:
+            cout << "Some tricks you can try includ a 360 flip, smith grind, or an airwalk.\n";
+            break;
+        case Professional:
+            cout << "Some tricks you can try includ a laser flip, 50-50 grind, or a manual wheelie.\n";
+            break;
+        default:
+            cout << "Please enter a level between 1-3.\n";
+        }
+    }
+}
 // ===================== CUSTOMIZE 3 BOARDS =====================
 void customizeBoards() {
+    string recommendation;
     cout << "Great! Let's customize 3 boards.\n\n";
+    //adding intro for enum set up
+    cout << "Do you want recommendations based on what your skill rating is? ";
+    cin >> recommendation;
+    if (recommendation == "yes") {
+        cout << "We are happy to help!\n";
+        int levelInput;
+        cout << "Please enter your skill level between 1 and 3. Level 1 is an absolute beginner and level 3 is a professional, or someone who has been skating for years.";
+        cin >> levelInput;
+
+        SkillLevel level = static_cast<SkillLevel>(levelInput);
+
+        switch (level) {
+        case Beginner:
+            cout << "For beginner skaters, we recommend trying a mix of sizes and grit tape. Skateboarders tend to have a personal preference, and it is unfortunately not a one size fits all thing. If you try a few options out, it'll be easier to determine what you like and what you don't like for the next time you order. Nothing you can choose will make a board unusable, it just comes down to personal preference! \n";
+            break;
+
+        case Amateur:
+            cout << "You probably have a good idea of what you like in a board. We do recommend trying a new size or a new type of grit if it's been a while! Sometimes it's easier to learn on one thing, but as you progress in the skill, you can learn you like something that you didn't when you first started!\n";
+            break;
+
+        case Professional:
+            cout << "As a professional, you probably know exactly what you like to skate on and that's great! Sometimes it can be fun or a bit of a challenge to try something new, though, and if you've been skating on the same kind of board for years, it might be nice to switch it up a bit!\n";
+            break;
+
+        default:
+            cout << "Please enter a level 1-3.\n";
+        }
+    }
+    else {
+        cout << "Great! Continue on to make your selections.\n";
+    }
 
     for (int i = 1; i <= 3; i++) {
         cout << "----- Customizing Board #" << i << " -----\n";
@@ -168,7 +234,22 @@ void customizeBoards() {
             << " and we'll start crafting your future wipeouts.\n\n";
 
         saveReport(i, brand, size, grit, total);
-
     }
-}
 
+    //array storing multiple user inputs to compare prices, only allows three entries
+    int prices[3];
+    int sum = 0;
+
+    cout << "How much did you pay for the last three skateboards your purchased?\n";
+    for (int i = 0; i < 3; i++) {
+        cin >> prices[i];
+        sum += prices[i];
+    }
+    cout << "On average, you have spent $" << sum / 3 << " on skateboards in the past. We try to keep our prices fair, but we can assure you that the quality of our boards is top notch! \n";
+
+
+    //function that accepts an array as a parameter
+    string recs[3] = { "Level 1", "Level 2", "Level 3" };
+    int size = 3;
+    trickRecommendations(recs, 3);
+}

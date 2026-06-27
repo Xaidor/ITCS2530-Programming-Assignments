@@ -1,0 +1,120 @@
+===== Board #1 Summary =====
+Favorite Brand:          b
+Board Size:              7.00
+Grip tape grit:          60
+Total:                   $87.00
+
+===== Board #2 Summary =====
+Favorite Brand:          g
+Board Size:              8.00
+Grip tape grit:          75
+Total:                   $91.50
+
+===== Board #1 Summary =====
+Favorite Brand:          d
+Board Size:              8.00
+Grip tape grit:          85
+Total:                   $92.50
+
+===== Board #2 Summary =====
+Favorite Brand:          c
+Board Size:              9.00
+Grip tape grit:          79
+Total:                   $94.90
+
+===== Board #3 Summary =====
+Favorite Brand:          5
+Board Size:              8.00
+Grip tape grit:          80
+Total:                   $92.00
+
+===== Board #1 Summary =====
+Favorite Brand:          d
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #2 Summary =====
+Favorite Brand:          8
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #3 Summary =====
+Favorite Brand:          8
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #1 Summary =====
+Favorite Brand:          d
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #2 Summary =====
+Favorite Brand:          8
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #3 Summary =====
+Favorite Brand:          8
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #1 Summary =====
+Favorite Brand:          8
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #2 Summary =====
+Favorite Brand:          8
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #3 Summary =====
+Favorite Brand:          8
+Board Size:              8.00
+Grip tape grit:          88
+Total:                   $92.80
+
+===== Board #1 Summary =====
+Favorite Brand:          brand
+Board Size:              8.00
+Grip tape grit:          80
+Total:                   $92.00
+
+===== Board #2 Summary =====
+Favorite Brand:          brand
+Board Size:              7.50
+Grip tape grit:          75
+Total:                   $90.00
+
+===== Board #3 Summary =====
+Favorite Brand:          brand
+Board Size:              8.80
+Grip tape grit:          88
+Total:                   $95.20
+
+===== Board #1 Summary =====
+Favorite Brand:          brand
+Board Size:              8.00
+Grip tape grit:          80
+Total:                   $92.00
+
+===== Board #2 Summary =====
+Favorite Brand:          brand
+Board Size:              7.00
+Grip tape grit:          70
+Total:                   $88.00
+
+===== Board #3 Summary =====
+Favorite Brand:          brand
+Board Size:              9.00
+Grip tape grit:          90
+Total:                   $96.00
+
