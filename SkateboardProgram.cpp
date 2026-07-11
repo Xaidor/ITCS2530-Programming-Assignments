@@ -5,12 +5,6 @@
 using namespace std;
 
 // ===================== Declaring Functions =====================
-struct Session {
-    string date;
-    double duration;
-    int AttemptedTricks;
-    int SuccessfulTricks;
-};
 
 void displayBanner();
 int displayMenu();
@@ -21,7 +15,6 @@ double calculateTotal(double size, int grit);
 void saveReport(int boardNum, string brand, double size, int grit, double total);
 void customizeBoards();
 void trickRecommendations(string recs[], int size);
-void printSessionInput(Session today);
 //setting up enum
 enum SkillLevel {
     Beginner = 1,
@@ -29,13 +22,50 @@ enum SkillLevel {
     Professional = 3
 };
 
-Session getSessionInput();
-Session today;
+//class, made from Session struct
+class Session {
+private:
+    string date;
+    double duration;
+    int AttemptedTricks;
+    int SuccessfulTricks;
+
+public:
+    Session() {
+        date = "";
+        duration = 0;
+        AttemptedTricks = 0;
+        SuccessfulTricks = 0;
+    }
+
+    void getSessionInput() {
+        cout << "Please enter today's date: ";
+        cin >> date;
+
+        cout << "Please enter how many minutes you skated for today: ";
+        cin >> duration;
+
+        cout << "Please enter how many tricks you attempted today: ";
+        cin >> AttemptedTricks;
+
+        cout << "Please enter how many tricks you successfully completed today: ";
+        cin >> SuccessfulTricks;
+    }
+
+    void printSessionInput() const {
+        cout << "Today's date: " << date << endl;
+        cout << "Today's skating duration: " << duration << endl;
+        cout << "Attempted tricks: " << AttemptedTricks << endl;
+        cout << "Successful tricks: " << SuccessfulTricks << endl;
+    }
+};
 
 // ===================== MAIN =====================
 int main() {
 
     displayBanner();
+
+    Session today;
     
 
     int menu = 0;
@@ -58,11 +88,11 @@ int main() {
             break;
 
         case 4:
-            today = getSessionInput();
+            today.getSessionInput();
             break;
 
         case 5:
-            printSessionInput(today);
+            today.printSessionInput();
             break;
 
         case 6:
@@ -271,30 +301,4 @@ void customizeBoards() {
     string recs[3] = { "Level 1", "Level 2", "Level 3" };
     int size = 3;
     trickRecommendations(recs, 3);
-}
-
-//function to fill in struct to log Session
-Session getSessionInput() {
-    Session today;
-
-    cout << "Please enter today's date: ";
-    cin >> today.date;
-
-    cout << "Please enter how many minutes you skated for today: ";
-    cin >> today.duration;
-
-    cout << "Please enter how many tricks you attempted today: ";
-    cin >> today.AttemptedTricks;
-
-    cout << "Please enter how many tricks you successfully completed today: ";
-    cin >> today.SuccessfulTricks;
-
-    return today;
-}
-
-void printSessionInput(Session today) {
-    cout << "Today's date: " << today.date << endl;
-    cout << "Today's skating duration: " << today.duration << endl;
-    cout << "Attempted tricks: " << today.AttemptedTricks << endl;
-    cout << "Successful tricks: " << today.SuccessfulTricks << endl;
 }
